@@ -53,6 +53,7 @@ header {
 }
 
 .logo {
+  cursor: pointer;
   display: inline-flex;
   height: 2rem;
 }
@@ -148,6 +149,31 @@ header {
   width: 100%;
 }
 /* NAVBAR END */
+/* animations start*/
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes armed {
+  from {
+    opacity: 0.5;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* animations end*/
 
 /* HERO SECTION START */
 
@@ -155,12 +181,20 @@ header {
   padding: 90px 0;
   background-color: var(--LIGHT-BLUE);
   color: var(--WHITE);
+  min-height: 80vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero__text {
+  animation: appear 0.8s ease-in-out forwards;
+  opacity: 0;
   margin-bottom: 2em;
 }
 .subtitle {
+  animation: appear 0.8s ease-in-out forwards;
   line-height: 2rem;
 }
 .subtitle p {
@@ -198,6 +232,9 @@ header {
 }
 
 .col {
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
   margin-bottom: 2em;
 }
 
@@ -222,6 +259,9 @@ header {
 
 .main {
   padding: 70px 0;
+  animation: armed linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 .primary__content--title {
@@ -230,12 +270,18 @@ header {
   font-weight: 700;
   font-size: 24px;
   margin-bottom: 0.5em;
+  animation: armed linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 .primary-content p {
   font-family: Monserrat;
   font-size: 21px;
   margin: 20px auto;
+  animation: armed linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 /* MAIN SECTION END */
 
@@ -244,10 +290,13 @@ header {
 .sidebar__content {
   background-color: var(--DARK-BLUE);
   margin-bottom: 1em;
-
   text-align: center;
   padding: 20px;
+  border-radius: 10px;
   color: var(--WHITE);
+  animation: armed linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 .sidebar__title {
@@ -366,10 +415,10 @@ header {
     margin: 0 0 0 1.4rem;
   }
   .hero__text {
-    width: 60%;
+    width: 47%;
   }
   .subtitle {
-    width: 39%;
+    width: 50%;
     align-self: flex-end;
   }
   .col + .col {
@@ -377,6 +426,9 @@ header {
   }
   .primary-content,
   .sidebar {
+    animation: armed linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
     display: flex;
     width: 100%;
   }
@@ -387,6 +439,7 @@ header {
     margin-left: 10px;
   }
   .primary__content--image {
+    border-radius: 10px;
     height: 240px;
   }
 
@@ -401,7 +454,15 @@ header {
     padding-right: 30px;
   }
 }
+@media (width >=60em) {
+  .hero__text {
+    width: 55%;
+  }
 
+  .subtitle {
+    width: 40%;
+  }
+}
 @media (width >=64em) {
   .row {
     flex-wrap: nowrap;
@@ -411,7 +472,13 @@ header {
     font-size: 90px;
     line-height: 95px;
   }
+
+  .hero__text {
+    width: 50%;
+  }
   .subtitle {
+    padding-inline: 20px;
+    width: 45%;
     line-height: 2rem;
   }
   .subtitle p {
